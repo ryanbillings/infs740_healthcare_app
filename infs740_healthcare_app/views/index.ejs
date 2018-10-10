@@ -12,10 +12,13 @@
       </p>
       <div class="hc-Form">
         <form action="/diagnosis" method="post">
-          Symptoms: <input type="text" name="symptoms"><br />
-          Age: <input type="number" name="age"><br />
-          Gender: <input type="radio" name="gender" value="male" checked />
-          <input type="radio" name="gender" value="female" />
+          Symptoms: <input placeholder="15" type="text" name="symptoms"><br />
+          Year of birth: <input placeholder="1989" type="number" name="age"><br />
+          Gender: <input type="radio" id="male" name="gender" value="male" checked />
+          <label for="male">Male</label>
+          <input type="radio" id="female" name="gender" value="female" />
+          <label for="female">Female</label>
+
           <input type="submit" value="Submit">
         </form>
       </div>

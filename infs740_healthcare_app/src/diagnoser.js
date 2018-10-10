@@ -14,6 +14,8 @@ exports.diagnose = (params) => {
     request(urlBuilder([symptoms], age, gender), (err, res, body) => {
       if (err) {
         return reject(err);
+      } else if (typeof JSON.parse(body) === 'string') {
+        return reject(body);
       }
 
       const diagnoses = JSON.parse(body).map((d) => { return d['Issue']['ProfName'] })
