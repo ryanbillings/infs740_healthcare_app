@@ -1,6 +1,6 @@
 const request = require("request");
 
-const API_MEDIC_URL = 'https://healthservice.priaid.ch/diagnosis'
+const API_MEDIC_URL = 'https://sandbox-healthservice.priaid.ch/diagnosis'
 
 function urlBuilder(symptomIds, age, gender){
   const queryStrings = `symptoms=[${symptomIds.join(',')}]&gender=${gender}&year_of_birth=${age}`;
