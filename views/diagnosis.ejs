@@ -7,14 +7,18 @@
   <body>
     <div id="hc-Container">
       <h1>INFS 740</h1>
-      <p>
-        We think you Have
-        <ul>
-        <% diagnosis.forEach((d) => { %>
-          <li><%= d %></li>
-        <% }); %>
-        </ul>
-      </p>
+      <% if (diagnosis.length > 0) { %>
+        <p>
+          We think you Have
+          <ul>
+          <% diagnosis.forEach((d) => { %>
+            <li><%= d %></li>
+          <% }); %>
+          </ul>
+        </p>
+      <% } else { %>
+        <p>We didn't find any matches</p>
+      <% } %>
       <br />
       <a href='/'>Try again</a>
     </div>
