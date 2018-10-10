@@ -11,6 +11,13 @@
         Please enter your information
       </p>
       <div class="hc-Form">
+        <form action="/diagnosis" method="post">
+          Symptoms: <input type="text" name="symptoms"><br />
+          Age: <input type="number" name="age"><br />
+          Gender: <input type="radio" name="gender" value="male" checked />
+          <input type="radio" name="gender" value="female" />
+          <input type="submit" value="Submit">
+        </form>
       </div>
     </div>
   </body>

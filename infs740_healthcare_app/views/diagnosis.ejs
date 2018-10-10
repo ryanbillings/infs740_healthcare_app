@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>INFS 740 Healthcare</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div id="hc-Container">
+      <h1>INFS 740</h1>
+      <p>
+        We think you Have
+        <ul>
+        <% diagnosis.forEach((d) => { %>
+          <li><%= d %></li>
+        <% }); %>
+        </ul>
+      </p>
+      <br />
+      <a href='/'>Try again</a>
+    </div>
+  </body>
+</html>
