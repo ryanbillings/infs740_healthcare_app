@@ -6,22 +6,40 @@
   </head>
   <body>
     <div id="hc-Container">
-      <h1>INFS 740</h1>
-      <p>
+      <center><h1>INFS 740</h1></center>
+      <!--<p>
         Please enter your information
       </p>
       <div class="hc-Form">
         <form action="/diagnosis" method="post">
-          Symptoms: <input placeholder="stomach pain" type="text" name="symptoms"><br />
-          Year of birth: <input placeholder="1989" type="number" name="age"><br />
+          Symptoms: <input placeholder="stomach pain" type="text" name="symptoms"><br/>
+          Year of birth: <input placeholder="1989" type="number" name="age"><br/>
           Gender: <input type="radio" id="male" name="gender" value="male" checked />
           <label for="male">Male</label>
           <input type="radio" id="female" name="gender" value="female" />
-          <label for="female">Female</label>
+          <label for="female">Female</label><br/>
 
-          <input type="submit" value="Submit">
+          <input type="submit" value="Submit"></center>
+        </form>
+      </div>-->
+      <div class="hc-Form">
+        <div class="hc-Form-heading">Please provide your information</div>
+        <form action="/diagnosis" method="post">
+        <label for="field1"><span>Symptoms <span class="required">*</span></span><input type="text" placeholder="Headache" class="input-field" name="field1" value="" /></label>
+        <label for="field2"><span>Year of birth <span class="required">*</span></span><input type="text" placeholder="1989" class="input-field" name="field2" value="" /></label>
+        <label><span>Gender</span>
+              <!--<label for="male"><input type="radio" class="choice" id="male" name="gender" value="male" checked />Male</label>
+              <label><span></span></label><label for="female"><input class="choice" type="radio" id="female" name="gender" value="female"/>Female</label></label>-->
+              <input type="radio" class="choice" id="male" name="gender" value="male" checked />Male<br/>
+              <input class="choice" type="radio" id="female" name="gender" value="female"/>Female</label>
+        <label><span></span><input type="submit" value="Submit" /></label>
         </form>
       </div>
+      <p>
+        <a href="https://www2.gmu.edu/">
+          <img src = "/images/mason-logo-green.png" class="img" alt = "Contact Page" />
+        </a>
+      </p>
     </div>
   </body>
 </html>
