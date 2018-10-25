@@ -8,10 +8,14 @@ exports.diagnose = (params) => {
   const resolvedApis = Promise.all([priaidPromise, infermedicaPromise]);
 
   return new Promise((resolve, reject) => {
-    resolvedApis.then(diagnoses => {
-      const mergedDiagnoses = diagnoses.reduce((reducer, diagnose) => {
-        return reducer.concat(diagnose);
-      }, []);
+    resolvedApis.then(apiData => {
+      const mergedDiagnoses = apiData.reduce((reducer, data) => {
+        let {diagnoses, specialists} = data;
+
+        reducer.diagnosis = reducer.diagnosis.concat(diagnoses);
+        reducer.specialists = reducer.specialists.concat(specialists);
+        return reducer;
+      }, {diagnosis: [], specialists: []});
 
       resolve(mergedDiagnoses);
     });

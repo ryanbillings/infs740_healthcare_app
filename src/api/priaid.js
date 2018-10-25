@@ -76,8 +76,16 @@ function priaidDiagnosis (params) {
           return reject(body);
         }
 
-        const diagnoses = JSON.parse(body).map((d) => { return d['Issue']['ProfName'] })
-        resolve(diagnoses);
+        const data = JSON.parse(body);
+        const diagnoses = data.map((d) => { return d['Issue']['Name'] });
+        const specialists = data.map((s) => {
+          let names = s['Specialisation'].reduce((reducer, specialty) => {
+            return reducer.concat(specialty['Name']);
+          }, []);
+          return names;
+        });
+
+        resolve({diagnoses, specialists});
       });
     }).catch((err) => { reject(err) });
   });

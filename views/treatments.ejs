@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>INFS 740 Healthcare</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div id="hc-Container">
+      <h2>We searched for the following in your area:</h2>
+      <% specialists.forEach((s) => { %>
+        <p><%= s %></p>
+      <% }) %>
+      <br />
+      <h3>And found these results:</h3>
+      <ul>
+      <% results.forEach((r) => { %>
+        <li>
+          <a target="_blank" href="<%= r.url %>"><%= r.name %></a>
+        </li>
+      <% }) %>
+      </ul>
+      <a href='/'>Try again</a>
+    </div>
+  </body>
+</html>

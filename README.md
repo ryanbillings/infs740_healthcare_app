@@ -15,6 +15,7 @@ PRIAID_API_KEY=email
 PRIAID_SECRET_KEY=secret
 INFERMEDICA_APP_ID=appid
 INFERMEDICA_APP_KEY=appkey
+YELP_API_KEY=secret
 ```
 
 (replace these with the API keys obtained from apimedic.com/apitest and https://developer.infermedica.com)

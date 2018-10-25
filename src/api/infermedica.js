@@ -80,7 +80,7 @@ function infermedicaDiagnosis (params) {
           reject(err);
         }
 
-        resolve(body.conditions.map(c => c.name));
+        resolve({diagnoses: body.conditions.map(c => c.name), specialists: []});
       });
     }).catch(err => reject(err));
   });
