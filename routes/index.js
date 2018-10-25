@@ -1,4 +1,5 @@
 const {diagnose} = require('../src/diagnoser.js');
+const {recommend} = require('../src/recommender.js');
 
 const express = require('express');
 const router = express.Router();
@@ -14,8 +15,19 @@ router.post('/diagnosis', (req, res, next) => {
   const age = req.body.age;
   const gender = req.body.gender;
 
-  diagnose({symptoms, age, gender}).then((diagnosis) => {
-    res.render('diagnosis', {diagnosis});
+  diagnose({symptoms, age, gender}).then((data) => {
+
+    const {diagnosis, specialists} = data;
+    res.render('diagnosis', {diagnosis, specialists});
+
+  }).catch((err) => res.render('error', {message: err, error: {}}));
+});
+
+router.get('/treatments', (req, res, next) => {
+  const specialists = req.query.specialists.split(',');
+
+  recommend(specialists).then(results => {
+    res.render('treatments', {specialists, results});
   }).catch((err) => res.render('error', {message: err, error: {}}));
 });
 
