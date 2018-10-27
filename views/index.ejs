@@ -2,27 +2,33 @@
 <html>
   <head>
     <title>INFS 740 Healthcare</title>
+      <h1>Disease Recommender System</h1>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <div id="hc-Container">
-      <center><h1>INFS 740</h1></center>
-      <!--<p>
-        Please enter your information
-      </p>
-      <div class="hc-Form">
-        <form action="/diagnosis" method="post">
-          Symptoms: <input placeholder="stomach pain" type="text" name="symptoms"><br/>
-          Year of birth: <input placeholder="1989" type="number" name="age"><br/>
-          Gender: <input type="radio" id="male" name="gender" value="male" checked />
-          <label for="male">Male</label>
-          <input type="radio" id="female" name="gender" value="female" />
-          <label for="female">Female</label><br/>
 
-          <input type="submit" value="Submit"></center>
-        </form>
-      </div>-->
+    <div id="hc-Container">
+<div class="hc-Banner">
+<ul class="menu">
+    <li class="link1">
+      <a href="#home" class="hyperlink"><span>SymptomChecker</span></a>
+    </li>
+    <li class="link1">
+      <a href="#home" class="hyperlink">About</a>
+    </li>
+        <li class="link1">
+          <a href="#home" class="hyperlink">Contact</a>
+        </li>
+    <li class="link1">
+      <a href="#home" class="hyperlink">Help</a>
+    </li>
+        
+
+  </ul>
+</div>
+
       <div class="hc-Form">
+
         <div class="hc-Form-heading">Please provide your information</div>
         <form action="/diagnosis" method="post">
         <label for="field1"><span>Symptoms <span class="required">*</span></span><input type="text" placeholder="Headache" class="input-field" name="symptoms" value="" /></label>
@@ -32,7 +38,7 @@
               <label><span></span></label><label for="female"><input class="choice" type="radio" id="female" name="gender" value="female"/>Female</label></label>-->
               <input type="radio" class="choice" id="male" name="gender" value="male" checked />Male<br/>
               <input class="choice" type="radio" id="female" name="gender" value="female"/>Female</label>
-        <label><span></span><input type="submit" value="Submit" /></label>
+        <label><span ></span><input type="submit"  value="Submit" /></label>
         </form>
       </div>
       <p>

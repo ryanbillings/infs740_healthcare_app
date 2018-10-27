@@ -1,16 +1,21 @@
 body {
   background-color: #eeeeee;
-  padding: 50px;
+  padding: 5px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
 }
+h1{
+    color: #006940;
+    
+}
 
 .hc-Form{
 	max-width: 500px;
-	padding-left: 380px;	
+	padding-left: 380px;
+        padding-top: 10px;
 	/*padding: 20px 12px 10px 20px;*/
 	font: 13px Arial, Helvetica, sans-serif;
 }
@@ -22,10 +27,12 @@ a {
 	font-size: 15px;
 	padding-bottom: 3px;
 	text-align: center;
+        color: #006940;
 }
 .hc-Form label{
 	display: block;
 	margin: 0px 0px 15px 0px;
+        color: #006940;
 }
 .hc-Form label > span{
 	width: 100px;
@@ -62,8 +69,9 @@ a {
 .hc-Form input[type=button]{
 	border: none;
 	padding: 8px 15px 8px 15px;
-	background: #FF8500;
-	color: #fff;
+	background: #fc3;
+	color: #006940;
+        font-weight: bold;
 	box-shadow: 1px 1px 4px #DADADA;
 	-moz-box-shadow: 1px 1px 4px #DADADA;
 	-webkit-box-shadow: 1px 1px 4px #DADADA;
@@ -81,4 +89,38 @@ a {
 	right:10px;
 	bottom:25px;
    }
+
+.hc-Banner span.banners{
+    padding: 10px;
+    color: #006940;
+
+}
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #fc3;
+}
+
+li.link1 {
+    float: left;
+}
+
+li.link1 a.hyperlink {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    color: #006940;
+    font-weight: bold;
+}
+
+li.link1 a.hyperlink:hover {
+    color:#fc3;
+    background-color: #006940;
+    font-weight: bolder;
+}
+
 
