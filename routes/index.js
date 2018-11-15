@@ -9,7 +9,12 @@ const router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index');
 });
-
+router.get('/about', function(req, res, next) {
+  res.render('about');
+});
+router.get('/help', function(req, res, next) {
+  res.render('help');
+});
 router.post('/diagnosis', (req, res, next) => {
   const symptoms = req.body.symptoms;
   const age = req.body.age;

@@ -13,9 +13,10 @@ h1{
 }
 
 .hc-Form{
-	max-width: 500px;
-	padding-left: 380px;
+	
+	padding-left: 100px;
         padding-top: 10px;
+		padding-right: 100px;
 	/*padding: 20px 12px 10px 20px;*/
 	font: 13px Arial, Helvetica, sans-serif;
 }
