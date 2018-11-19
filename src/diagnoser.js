@@ -1,5 +1,7 @@
 const {priaidDiagnosis} = require('../src/api/priaid.js');
 const {infermedicaDiagnosis} = require('../src/api/infermedica.js');
+const uniq = require('lodash.uniq');
+const flatten = require('lodash.flatten');
 
 exports.diagnose = (params) => {
   const priaidPromise = priaidDiagnosis(params);
@@ -17,7 +19,12 @@ exports.diagnose = (params) => {
         return reducer;
       }, {diagnosis: [], specialists: []});
 
+      mergedDiagnoses.diagnosis = uniq(flatten(mergedDiagnoses.diagnosis));
+      mergedDiagnoses.specialists = uniq(flatten(mergedDiagnoses.specialists));
+
+      console.log(mergedDiagnoses.specialists);
+
       resolve(mergedDiagnoses);
-    });
+    }).catch(err => { reject(err) });
   });
 }
