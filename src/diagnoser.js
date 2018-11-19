@@ -1,16 +1,22 @@
 const {priaidDiagnosis} = require('../src/api/priaid.js');
 const {infermedicaDiagnosis} = require('../src/api/infermedica.js');
+const googleTrends = require('google-trends-api');
 const uniq = require('lodash.uniq');
 const flatten = require('lodash.flatten');
 
-exports.diagnose = (params) => {
+function getTrends(symptoms) {
+  return googleTrends.interestOverTime({keyword: symptoms});
+}
+
+
+function diagnose(params){
   const priaidPromise = priaidDiagnosis(params);
   const infermedicaPromise = infermedicaDiagnosis(params);
 
   const resolvedApis = Promise.all([priaidPromise, infermedicaPromise]);
 
   return new Promise((resolve, reject) => {
-    resolvedApis.then(apiData => {
+    resolvedApis.then(async (apiData) => {
       const mergedDiagnoses = apiData.reduce((reducer, data) => {
         let {diagnoses, specialists} = data;
 
@@ -21,10 +27,11 @@ exports.diagnose = (params) => {
 
       mergedDiagnoses.diagnosis = uniq(flatten(mergedDiagnoses.diagnosis));
       mergedDiagnoses.specialists = uniq(flatten(mergedDiagnoses.specialists));
-
-      console.log(mergedDiagnoses.specialists);
+      mergedDiagnoses.trends = await getTrends(params.symptoms);
 
       resolve(mergedDiagnoses);
     }).catch(err => { reject(err) });
   });
 }
+
+exports.diagnose = diagnose;
