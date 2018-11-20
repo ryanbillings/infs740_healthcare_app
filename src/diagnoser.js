@@ -5,7 +5,10 @@ const uniq = require('lodash.uniq');
 const flatten = require('lodash.flatten');
 
 function getTrends(symptoms) {
-  return googleTrends.interestOverTime({keyword: symptoms});
+  return googleTrends.interestOverTime({
+    keyword: symptoms,
+    startTime: new Date('2018-01-01')
+  });
 }
 
 

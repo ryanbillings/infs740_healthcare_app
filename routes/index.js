@@ -23,7 +23,14 @@ router.post('/diagnosis', (req, res, next) => {
   diagnose({symptoms, age, gender}).then((data) => {
 
     const {diagnosis, specialists} = data;
-    res.render('diagnosis', {diagnosis, specialists});
+    const trends = JSON.parse(data.trends);
+
+    res.render('diagnosis', {
+      symptoms,
+      diagnosis,
+      specialists,
+      trends: trends.default.timelineData.filter((x, i) => i % 3 == 0)
+    });
 
   }).catch((err) => res.render('error', {message: err, error: {}}));
 });

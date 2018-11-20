@@ -4,6 +4,32 @@
     <title>INFS 740 Healthcare</title>
       <h1>Disease Recommender System</h1>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdn.jsdelivr.net/npm/frappe-charts@1.1.0/dist/frappe-charts.min.iife.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+        const data = {
+          labels: [<%- trends.map(t => `"${t.formattedAxisTime}"`) %>],
+          datasets: [
+            {
+              name: "<%= symptoms %>", type: "line",
+              values: [<%= trends.map(t => t.formattedValue[0]) %>]
+            }
+          ]
+        }
+
+        const chart = new frappe.Chart("#chart", {
+          title: "Google Trends for <%= symptoms %> over Time",
+          data: data,
+          type: 'line',
+          lineOptions: {
+            heatline: 1,
+            regionFill: 1
+          },
+          height: 250,
+          colors: ['#7cd6fd']
+        });
+      });
+    </script>
   </head>
   <body>
 
@@ -19,7 +45,7 @@
     <li class="link1">
       <a href="/help" class="hyperlink">Help</a>
     </li>
-        
+
 
   </ul>
 </div>
@@ -41,6 +67,12 @@
       <% } else { %>
         <p>We didn't find any matches</p>
       <% } %>
+      <div>
+        <div id="chart"></div>
+        <div>
+          <%= JSON.stringify(trends.default) %>
+        </div>
+      </div>
       <br />
       <a href='/'>Try again</a>
 	  </div>
