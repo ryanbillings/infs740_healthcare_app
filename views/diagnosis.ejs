@@ -51,19 +51,32 @@
 </div>
 <div class="hc-Form-heading">
       <% if (diagnosis.length > 0) { %>
-        <p>
-          We think you Have
-          <ul>
+        <div class="hc-Diagnosis">
+          <h3>Your Potential Diagnosis</h3>
+          <div class="hc-Diagnosis-list">
           <% diagnosis.forEach((d) => { %>
-            <li><%= d %></li>
+            <div class="hc-Diagnosis-result">
+              <% if (d.id) { %>
+                <a target="_blank" href="http://www.disease-ontology.org/term/DOID%3A<%= d.id %>">
+                  <%= d.name %>
+                </a>
+              <% } else { %>
+                <%= d.name %>
+              <% } %>
+            </div>
+            <div class="hc-Diagnosis-resultDesc">
+              <%= d.description %>
+            </div>
           <% }); %>
-          </ul>
-        </p>
+          </div>
+        </div>
+        <% if (specialists.length > 0) { %>
         <p>
           <a href="/treatments?specialists=<%= specialists %>">
             View recommended specialists in your area
           </a>
         </p>
+        <% } %>
       <% } else { %>
         <p>We didn't find any matches</p>
       <% } %>
@@ -74,7 +87,7 @@
         </div>
       </div>
       <br />
-      <a href='/'>Try again</a>
+      <a href='/'>Try disease recommender again</a>
 	  </div>
 	        <p>
         <a href="https://www2.gmu.edu/">

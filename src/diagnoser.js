@@ -1,5 +1,6 @@
 const {priaidDiagnosis} = require('../src/api/priaid.js');
 const {infermedicaDiagnosis} = require('../src/api/infermedica.js');
+const {ontologyClassifier} = require('../src/api/ontology.js');
 const googleTrends = require('google-trends-api');
 const uniq = require('lodash.uniq');
 const flatten = require('lodash.flatten');
@@ -28,7 +29,10 @@ function diagnose(params){
         return reducer;
       }, {diagnosis: [], specialists: []});
 
-      mergedDiagnoses.diagnosis = uniq(flatten(mergedDiagnoses.diagnosis));
+      const diagnosis = uniq(flatten(mergedDiagnoses.diagnosis));
+      const decoratedDiagnosis = diagnosis.map(d => ontologyClassifier(d));
+
+      mergedDiagnoses.diagnosis = decoratedDiagnosis;
       mergedDiagnoses.specialists = uniq(flatten(mergedDiagnoses.specialists));
       mergedDiagnoses.trends = await getTrends(params.symptoms);
 
