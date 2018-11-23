@@ -11,14 +11,20 @@
           labels: [<%- trends.map(t => `"${t.formattedAxisTime}"`) %>],
           datasets: [
             {
-              name: "<%= symptoms %>", type: "line",
+              name: "US Average", type: "line",
               values: [<%= trends.map(t => t.formattedValue[0]) %>]
+            },
+            <% if (location) { %>
+            {
+              name: "<%= location.city %> Average", type: "line",
+              values: [<%= trends.map(t => t.formattedValue[1]) %>]
             }
+            <% } %>
           ]
         }
 
         const chart = new frappe.Chart("#chart", {
-          title: "Google Trends for <%= symptoms %> over Time",
+          title: "Google Trends for \"<%= symptoms %>\" over time",
           data: data,
           type: 'line',
           lineOptions: {
@@ -26,7 +32,7 @@
             regionFill: 1
           },
           height: 250,
-          colors: ['#7cd6fd']
+          colors: ['#7cd6fd', '#743ee2']
         });
       });
     </script>
@@ -82,9 +88,6 @@
       <% } %>
       <div>
         <div id="chart"></div>
-        <div>
-          <%= JSON.stringify(trends.default) %>
-        </div>
       </div>
       <br />
       <a href='/'>Try disease recommender again</a>

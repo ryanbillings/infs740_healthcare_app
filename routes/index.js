@@ -4,6 +4,8 @@ const {recommend} = require('../src/recommender.js');
 const express = require('express');
 const router = express.Router();
 
+const zipcodes = require('zipcodes');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -19,16 +21,22 @@ router.post('/diagnosis', (req, res, next) => {
   const symptoms = req.body.symptoms;
   const age = req.body.age;
   const gender = req.body.gender;
+  const zipcode = req.body.zip;
+  let location;
 
-  diagnose({symptoms, age, gender}).then((data) => {
+  diagnose({symptoms, age, gender, zipcode}).then((data) => {
 
     const {diagnosis, specialists} = data;
     const trends = JSON.parse(data.trends);
+    if(zipcode) {
+      location = zipcodes.lookup(zipcode);
+    }
 
     res.render('diagnosis', {
       symptoms,
       diagnosis,
       specialists,
+      location,
       trends: trends.default.timelineData.filter((x, i) => i % 3 == 0)
     });
 

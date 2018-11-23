@@ -1,16 +1,9 @@
 const {priaidDiagnosis} = require('../src/api/priaid.js');
 const {infermedicaDiagnosis} = require('../src/api/infermedica.js');
 const {ontologyClassifier} = require('../src/api/ontology.js');
-const googleTrends = require('google-trends-api');
+const {getTrends} = require('../src/api/trends.js');
 const uniq = require('lodash.uniq');
 const flatten = require('lodash.flatten');
-
-function getTrends(symptoms) {
-  return googleTrends.interestOverTime({
-    keyword: symptoms,
-    startTime: new Date('2018-01-01')
-  });
-}
 
 
 function diagnose(params){
@@ -34,7 +27,7 @@ function diagnose(params){
 
       mergedDiagnoses.diagnosis = decoratedDiagnosis;
       mergedDiagnoses.specialists = uniq(flatten(mergedDiagnoses.specialists));
-      mergedDiagnoses.trends = await getTrends(params.symptoms);
+      mergedDiagnoses.trends = await getTrends(params.symptoms, params.zipcode);
 
       resolve(mergedDiagnoses);
     }).catch(err => { reject(err) });
