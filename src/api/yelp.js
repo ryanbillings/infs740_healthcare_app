@@ -8,10 +8,10 @@ function requestHeaders() {
   }
 }
 
-function graphQlParams(searchTerm) {
+function graphQlParams(searchTerm, zipcode) {
   return `{
     search(term: "${searchTerm.join(' ')}",
-           location: "Washington DC") {
+           location: "${zipcode}") {
       total
       business {
         name
@@ -22,13 +22,14 @@ function graphQlParams(searchTerm) {
   }`;
 }
 
-function yelpSearch(specialists) {
+function yelpSearch(specialists, zipcode) {
   return new Promise((resolve, reject) => {
     const graphQLClient = new GraphQLClient(YELP_API_URL, {
       headers: requestHeaders()
     });
 
-    graphQLClient.request(graphQlParams(specialists)).then(data => {
+    graphQLClient.request(graphQlParams(specialists, zipcode)).then(data => {
+      console.log(JSON.stringify(data));
       const results = data.search.business.map(biz => {
         let {name, url} = biz;
         return {name, url};

@@ -76,9 +76,9 @@
           <% }); %>
           </div>
         </div>
-        <% if (specialists.length > 0) { %>
+        <% if (specialists.length > 0 && location) { %>
         <p>
-          <a href="/treatments?specialists=<%= specialists %>">
+          <a href="/treatments?specialists=<%= specialists%>&zipcode=<%=location.zip%>">
             View recommended specialists in your area
           </a>
         </p>

@@ -45,9 +45,11 @@ router.post('/diagnosis', (req, res, next) => {
 
 router.get('/treatments', (req, res, next) => {
   const specialists = req.query.specialists.split(',');
+  const zipcode = req.query.zipcode;
+  const location = zipcodes.lookup(zipcode);
 
-  recommend(specialists).then(results => {
-    res.render('treatments', {specialists, results});
+  recommend(specialists, zipcode).then(results => {
+    res.render('treatments', {specialists, results, location});
   }).catch((err) => res.render('error', {message: err, error: {}}));
 });
 
