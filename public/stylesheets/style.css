@@ -86,9 +86,9 @@ h1{
 	color: #fff;
 }
 
-.img{position:absolute;
-	right:10px;
-	bottom:25px;
+.img{
+	text-align: right;
+	padding-bottom: 25px;
    }
 
 .hc-Banner span.banners{
