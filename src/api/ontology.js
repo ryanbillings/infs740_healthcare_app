@@ -11,6 +11,10 @@ const ONTOLOGY_DESCRIPTION = {
   'Inflammation of the nose and throat': {
     description: "A primary immunodeficiency disease characterized by recurrent episodes of maculopapular skin rash triggered by exposure to cold associated with low-grade fever, general malaise, eye redness and arthralgia/myalgia.",
     id: '0090061'
+  },
+  'Reflux disease': {
+    description: "A digestive disease in which stomach acid or bile irritates the food pipe lining.",
+    id: '8534'
   }
 };
 
