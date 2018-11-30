@@ -4,6 +4,15 @@
     <title>INFS 740 Healthcare</title>
     <h1>Disease Recommender System</h1>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script>
+     function changeLocation(){
+       var zip = document.getElementById("zip").value;
+      
+       var currURL= window.location.href;
+       currURL= currURL.substring(0,(currURL.length)-5) + zip;
+       window.location.replace(currURL);
+     }
+    </script>
   </head>
   <body>
     <div class="hc-Banner">
@@ -19,26 +28,33 @@
         </li>
       </ul>
     </div>
-    <div id="hc-Container">
-      <% if (results.length > 0) { %>
-      <h2>Specialists near <%= location.city %>, <%= location. state %>:</h2>
-      <% specialists.forEach((s) => { %>
-        <p><%= s %></p>
-      <% }) %>
-      <br />
-      <h3>And found these results:</h3>
-      <ul>
-      <% results.forEach((r) => { %>
-        <li>
-          <a target="_blank" href="<%= r.url %>"><%= r.name %></a>
-        </li>
-      <% }) %>
-      </ul>
-      <% } else { %>
-        <div>No results found</div>
-      <% } %>
-      <a href='/'>Try again</a>
-    </div>
+      <div id="hc-Container">
+        <% if (results.length > 0) { %>
+        <h2>Specialists near <%= location.city %>, <%= location. state %>:</h2>
+        <% specialists.forEach((s) => { %>
+          <p><%= s %></p>
+        <% }) %>
+        <br />
+        <h3>And found these results:</h3>
+        <ul>
+        <% results.forEach((r) => { %>
+          <li>
+            <a target="_blank" href="<%= r.url %>"><%= r.name %></a>
+          </li>
+        <% }) %>
+        </ul>
+        <% } else { %>
+          <div>No results found</div>
+        <% } %>
+      </div>
+      <p>
+        Enter zipcode to find specialists in different location:
+        <label for="field3">
+            <input type="text" placeholder="22320" class="input-field" name="zip" id="zip" value="" />
+        </label>
+        <label><span ></span><input type="submit"  value="Submit" onclick="changeLocation()"/></label>
+      </p>
+    <a href='/'>Try disease recommender again</a>
     <p class="img">
       <a href="https://www2.gmu.edu/">
         <img src = "/images/mason-logo-green.png" alt = "Contact Page" />

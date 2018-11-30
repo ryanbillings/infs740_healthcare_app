@@ -149,4 +149,9 @@ li.link1 a.hyperlink:hover {
   grid-template-rows: 100px auto;
 }
 
+.image{
+	text-align: right;
+	padding-top: 28%;
+}
+
 
