@@ -84,7 +84,13 @@ function infermedicaDiagnosis (params) {
           body.conditions = [];
         }
 
-        resolve({diagnoses: body.conditions.map(c => c.name), specialists: []});
+        console.log('Infermedica', body.conditions);
+
+        resolve({diagnoses: body.conditions.map(c => {
+          return {
+            name: c.name,
+            probability: c.probability
+          }}), specialists: []});
       });
     }).catch(err => reject(err));
   });

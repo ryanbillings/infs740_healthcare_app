@@ -77,7 +77,12 @@ function priaidDiagnosis (params) {
         }
 
         const data = JSON.parse(body);
-        const diagnoses = data.map((d) => { return d['Issue']['Name'] });
+        const diagnoses = data.map((d) => {
+          return {
+            name: d['Issue']['Name'],
+            probability: d['Issue']['Accuracy']/100
+          }
+        });
         const specialists = data.map((s) => {
           let names = s['Specialisation'].reduce((reducer, specialty) => {
             return reducer.concat(specialty['Name']);

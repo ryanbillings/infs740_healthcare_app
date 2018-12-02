@@ -19,11 +19,12 @@ const ONTOLOGY_DESCRIPTION = {
 };
 
 function ontologyClassifier (disease) {
-  const ontologyItem = ONTOLOGY_DESCRIPTION[disease];
+  const ontologyItem = ONTOLOGY_DESCRIPTION[disease.name];
   return {
-    name: disease,
+    name: disease.name,
     description: ontologyItem ? ontologyItem.description : "N/A",
-    id: ontologyItem ? ontologyItem.id : ""
+    id: ontologyItem ? ontologyItem.id : "",
+    probability: disease.probability
   };
 };
 
